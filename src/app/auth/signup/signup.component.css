@@ -8,3 +8,9 @@ mat-card {
   padding: 40px;
   width: 100%;
 }
+
+.btn-right {
+  display: flex;
+  justify-content: flex-end;
+}
+

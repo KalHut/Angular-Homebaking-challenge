@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../signup/signup.component';
+import { AuthService, User } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,16 +8,16 @@ import { User } from '../signup/signup.component';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent  implements OnInit {
+
+  constructor(private authService: AuthService, private router: Router){}
+
   isLoading: boolean = false;
 
   usersLists: User[] = []; // list of users.
-  loginObject: Omit<User, "name" | "ammount"> = {
+  loginObject: Pick<User, "email" | "password"> = {
     email: '',
     password: ''
   }
-
-
-  constructor(private router: Router){}
 
   ngOnInit(): void {}
 
@@ -33,8 +33,10 @@ export class LoginComponent  implements OnInit {
       return;
     }
 
+    this.authService.authenticate(foundUser);
+
     setTimeout(() => {
       this.router.navigate(['/account']);
-    }, 2000)
+    }, 1000)
   }
 }

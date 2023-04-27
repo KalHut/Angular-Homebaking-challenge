@@ -1,0 +1,13 @@
+h1 {
+  text-align: center;
+}
+
+table {
+  padding: 25px;
+}
+
+.btn-right {
+  display: flex;
+  justify-content:flex-end;
+  margin-top: 40px;
+}

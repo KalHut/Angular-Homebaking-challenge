@@ -1,0 +1,16 @@
+h2 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+.account-btn {
+  display: flex;
+  margin-top: 300px;
+  padding: 50px;
+  justify-content: space-evenly;
+
+}
+

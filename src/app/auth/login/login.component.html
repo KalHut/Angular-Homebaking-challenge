@@ -24,10 +24,18 @@
         </form>
       </mat-card-content>
 
+      <mat-card-actions class="btn-custom">
+        <a routerLink="/forgot-my-password" mat-button color="accent">
+          <mat-icon>lock_reset</mat-icon>
+          Forgot your password?
+        </a>
+      </mat-card-actions>
+
       <mat-divider></mat-divider>
 
-      <mat-card-actions>
-        <button (click)="login()" color="accent" type="submit" mat-raised-button>
+      <mat-card-actions class="btn-right">
+        <button (click)="login()" color="primary" type="submit" mat-raised-button>
+          <mat-icon>login</mat-icon>
           <mat-spinner *ngIf="isLoading" diameter="35"></mat-spinner>
           <span *ngIf="!isLoading">Login</span>
         </button>

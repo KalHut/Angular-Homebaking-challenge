@@ -31,8 +31,9 @@
 
       <mat-divider></mat-divider>
 
-      <mat-card-actions>
-        <button (click)="signup()" color="accent" type="submit" mat-raised-button>
+      <mat-card-actions class="btn-right">
+        <button (click)="signup()" color="primary" type="submit" mat-raised-button>
+          <mat-icon>how_to_reg</mat-icon>
           <mat-spinner *ngIf="isLoading" diameter="35"></mat-spinner>
           <span *ngIf="!isLoading">Sign Up</span>
         </button>

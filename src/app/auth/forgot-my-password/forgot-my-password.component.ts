@@ -3,40 +3,35 @@ import { Router } from '@angular/router';
 import { User } from '../auth.service';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-forgot-my-password',
+  templateUrl: './forgot-my-password.component.html',
+  styleUrls: ['./forgot-my-password.component.css']
 })
-export class SignupComponent  implements OnInit {
+export class ForgotMyPasswordComponent implements OnInit {
 
   constructor(private router: Router){}
 
   isLoading: boolean = false;
 
   usersLists: User[] = []; // list of users.
-  signupObject: User = { // form data that will be used to create a new local user.
-    name: '',
+  resetPasswordObject: Pick<User, "email" | "password"> = {
     email: '',
-    password: '',
-    ammount: 0,
-    movements: []
+    password: ''
   }
 
   ngOnInit(): void {}
 
-  signup() {
+  resetPassword() {
     this.isLoading = true;
 
     this.usersLists = JSON.parse(localStorage.getItem("usersLists") ?? "[]") as User[]; // Get the users list from local storage. if local storage does not contain users list it will be empty array.
-    const foundUser = this.usersLists.find(user => user.email === this.signupObject.email); // Check if the email is already in the users list.
 
-    if (foundUser) {
-      alert("Email already exists!");
-      this.isLoading = false;
-      return;
-    }
+    this.usersLists.map(user => {
+      if (user.email === this.resetPasswordObject.email) {
+        user.password = this.resetPasswordObject.password
+      }
+    })
 
-    this.usersLists.push(this.signupObject); // Add signup user to users list.
     localStorage.setItem("usersLists", JSON.stringify(this.usersLists));
 
     setTimeout(() => {
@@ -44,3 +39,4 @@ export class SignupComponent  implements OnInit {
     }, 1000)
   }
 }
+

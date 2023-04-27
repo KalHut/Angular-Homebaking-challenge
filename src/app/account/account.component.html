@@ -1,1 +1,20 @@
-<p>account works!</p>
+<h2>Hi, {{user?.name}}</h2>
+<h3>Saldo: {{user?.ammount}}€</h3>
+
+<div class="account-btn">
+  <a routerLink="/account/deposit" mat-fab extended color="primary">
+    <mat-icon>credit_card</mat-icon>
+    Deposit
+  </a>
+  <mat-divider></mat-divider>
+  <a routerLink="/account/withdraw" mat-fab extended color="primary">
+    <mat-icon>payments</mat-icon>
+    Withdraw
+  </a>
+  <mat-divider></mat-divider>
+  <a routerLink="/account/movements" mat-fab extended color="primary">
+    <mat-icon>compare_arrows</mat-icon>
+    Movements
+  </a>
+</div>
+
